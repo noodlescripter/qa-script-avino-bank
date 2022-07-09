@@ -1,0 +1,239 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-07-08T02:40:18.106Z",
+    "end": "2022-07-08T02:40:40.964Z",
+    "duration": 22858,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "33e8a806-226c-4296-865a-9044c8f243b1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\suite\\admin.cy.js",
+      "file": "cypress\\e2e\\suite\\admin.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8fa02949-c53a-4c5d-b4cc-5ba8fbfc52f4",
+          "title": "Validate_Account_Creation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate_Account_Creation_1: Verify that admin can create an checking account",
+              "fullTitle": "Validate_Account_Creation Validate_Account_Creation_1: Verify that admin can create an checking account",
+              "timedOut": null,
+              "duration": 14884,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin@admin.com\", \"abc123\");\nAccount.createCheckingAccount(\"Hamim Alam\", ammount, \"hamim.alam@test.com\", \"12345678\");\nELogin.logout();",
+              "err": {},
+              "uuid": "65158ea2-5d22-4870-95d4-7856b1c204c4",
+              "parentUUID": "8fa02949-c53a-4c5d-b4cc-5ba8fbfc52f4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate_Account_Creation_2: Verify that account created",
+              "fullTitle": "Validate_Account_Creation Validate_Account_Creation_2: Verify that account created",
+              "timedOut": null,
+              "duration": 1170,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin@admin.com\", \"abc123\");\ncy.findByText(\"Hamim Alam\").invoke(\"text\").then(function (accName) {\n  expect(accName).eq(\"Hamim Alam\");\n});\nELogin.logout();",
+              "err": {},
+              "uuid": "9ce761de-60ec-4966-be9c-d56f516561cb",
+              "parentUUID": "8fa02949-c53a-4c5d-b4cc-5ba8fbfc52f4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate_Account_Creation_3: Verify that new user can login",
+              "fullTitle": "Validate_Account_Creation Validate_Account_Creation_3: Verify that new user can login",
+              "timedOut": null,
+              "duration": 1212,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"hamim.alam@test.com\", \"12345678\");\ncy.get('.details > h1').invoke(\"text\").then(function (name) {\n  expect(name).eq(\"Hamim Alam\");\n});\ncy.get('.balance').invoke(\"text\").then(function (acAmount) {\n  expect(acAmount).eq(ammount);\n});\nELogin.logout();",
+              "err": {},
+              "uuid": "ec4f561f-22ce-4d99-ba15-69a5bda57035",
+              "parentUUID": "8fa02949-c53a-4c5d-b4cc-5ba8fbfc52f4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "65158ea2-5d22-4870-95d4-7856b1c204c4",
+            "9ce761de-60ec-4966-be9c-d56f516561cb",
+            "ec4f561f-22ce-4d99-ba15-69a5bda57035"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 17266,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "ace17623-36a7-40e2-8372-a808f45098d2",
+          "title": "Validate_Login_With_Valid_And_Invalid_Username_And_Password",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate_Login_With_Valid_And_Invalid_Username_And_Password_1: Verify that user can not login with valid username and invalid pass",
+              "fullTitle": "Validate_Login_With_Valid_And_Invalid_Username_And_Password Validate_Login_With_Valid_And_Invalid_Username_And_Password_1: Verify that user can not login with valid username and invalid pass",
+              "timedOut": null,
+              "duration": 1039,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin@admin.com\", \"World\");\nwait.waitForEle(\".notif.danger\");\ncy.get(\".notif.danger\").invoke(\"text\").then(function (errMsg) {\n  expect(errMsg).eq(\"Wrong username and password.\");\n});",
+              "err": {},
+              "uuid": "9cff4963-0f3d-4f1f-bd56-afd459737605",
+              "parentUUID": "ace17623-36a7-40e2-8372-a808f45098d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate_Login_With_Valid_And_Invalid_Username_And_Password_2: Verify that user can not login with invalid username and valid pass",
+              "fullTitle": "Validate_Login_With_Valid_And_Invalid_Username_And_Password Validate_Login_With_Valid_And_Invalid_Username_And_Password_2: Verify that user can not login with invalid username and valid pass",
+              "timedOut": null,
+              "duration": 945,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin\", \"abc123\");\nwait.waitForEle(\".notif.danger\");\ncy.get(\".notif.danger\").invoke(\"text\").then(function (errMsg) {\n  expect(errMsg).eq(\"Wrong username and password.\");\n});",
+              "err": {},
+              "uuid": "d7454317-8550-4390-8d24-0283bc99adfb",
+              "parentUUID": "ace17623-36a7-40e2-8372-a808f45098d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate_Login_With_Valid_And_Invalid_Username_And_Password_3: Verify that user can not login with invalid username and invalid pass",
+              "fullTitle": "Validate_Login_With_Valid_And_Invalid_Username_And_Password Validate_Login_With_Valid_And_Invalid_Username_And_Password_3: Verify that user can not login with invalid username and invalid pass",
+              "timedOut": null,
+              "duration": 845,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin\", \"World\");\nwait.waitForEle(\".notif.danger\");\ncy.get(\".notif.danger\").invoke(\"text\").then(function (errMsg) {\n  expect(errMsg).eq(\"Wrong username and password.\");\n});",
+              "err": {},
+              "uuid": "1f050f16-bfd8-4b42-aadb-535ae969a859",
+              "parentUUID": "ace17623-36a7-40e2-8372-a808f45098d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate_Login_With_Valid_And_Invalid_Username_And_Password_1: Verify that user can login with valid user name and password",
+              "fullTitle": "Validate_Login_With_Valid_And_Invalid_Username_And_Password Validate_Login_With_Valid_And_Invalid_Username_And_Password_1: Verify that user can login with valid user name and password",
+              "timedOut": null,
+              "duration": 1014,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ELogin.loginAsAdmin(\"admin@admin.com\", \"abc123\");\nwait.waitForEle(\":nth-child(1) > .details > h1\");\ncy.get(\":nth-child(1) > .details > h1\").invoke('text').then(function (adminAcc) {\n  expect(adminAcc).eq(\"Admin Account\");\n});",
+              "err": {},
+              "uuid": "b0f4d178-ade7-4fb7-800a-de20e42072ee",
+              "parentUUID": "ace17623-36a7-40e2-8372-a808f45098d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9cff4963-0f3d-4f1f-bd56-afd459737605",
+            "d7454317-8550-4390-8d24-0283bc99adfb",
+            "1f050f16-bfd8-4b42-aadb-535ae969a859",
+            "b0f4d178-ade7-4fb7-800a-de20e42072ee"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3843,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
